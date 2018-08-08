@@ -1,1 +1,3 @@
-console.log('test02')
+var nome = document.querySelector('#exampleInputName');
+nome.value = 'marcos';
+nome.style.color = 'blue';
