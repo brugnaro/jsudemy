@@ -1,1 +1,1 @@
-variáveis
+G11
