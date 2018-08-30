@@ -1,4 +1,4 @@
-let userController = new UserController("form-user-create", "table-users");
+let userController = new UserController("form-user-create", "form-user-update", "table-users");
 
 //funçao e trecho de codigo que executa alguma coisa e retorna algum valor;
 //subrotina é um tipo de função que so executa alguma coisa;
