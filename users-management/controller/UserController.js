@@ -24,9 +24,9 @@ class UserController {
       btn.disabled = true;
 
       let values = this.getValues(this.formUpdateEl);
-      
+
       let index = this.formUpdateEl.dataset.trIndex;
-      
+
       let tr = this.tableEl.rows[index];
 
       let userOld = JSON.parse(tr.dataset.user);
@@ -84,7 +84,7 @@ class UserController {
 
       this.getPhoto(this.formEl).then(
         (content) => {
-          
+
           values.photo = content;
 
           values.save();
@@ -177,21 +177,9 @@ class UserController {
 
   }
 
-  getUsersStorage() {
-
-    let users = [];
-
-    if (localStorage.getItem("users")) {
-      users = JSON.parse(localStorage.getItem("users"));
-    }
-
-    return users;
-
-  }
-
   selectAll() {
 
-    let users = this.getUsersStorage();
+    let users = User.getUsersStorage();
 
     users.forEach(dataUser => {
       let user = new User();
@@ -239,6 +227,9 @@ class UserController {
 
     tr.querySelector(".btn-delete").addEventListener("click", e => {
       if (confirm("Deseja realmente excluir?")) {
+        let user = new User();
+        user.loadFromJSON(JSON.parse(tr.dataset.user));
+        user.remove();
         tr.remove();
         this.updateCount();
       }
